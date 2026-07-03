@@ -172,17 +172,6 @@ User opens browser → http://localhost:5000
 | GET | `/tasks/complete/<id>` | Toggle status | Yes |
 
 ---
-
-## Team Members
-
-| Member | Role | Branch |
-|--------|------|--------|
-| **Abdul Ahad** | Project Lead (Structure, Factory, Integration) | `master` / `develop` |
-| **Abubakar** | Authentication Module (Login, Register, Session) | `feature-auth` |
-| **Rehan** | Task CRUD Module (Create, Edit, Delete, Complete) | `feature-task-crud` |
-| **Hassan Adeel** | UI | `feature-ui-testing` |
-| **Muhammad Issa** | Task Testing and Documentation | `feature-testing-docs` |
-
 ---
 
 ## Git Workflow
