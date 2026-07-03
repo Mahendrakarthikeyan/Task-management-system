@@ -1,182 +1,195 @@
-# Task Management System
+# 📋 Task Management System
+![Python](https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-3.x-black?style=for-the-badge&logo=flask)
+![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-red?style=for-the-badge)
 
-A web-based Task Management System built with **Flask**, **SQLite**, and a custom design system. Features user authentication, full task CRUD operations, search/filter, and a responsive dashboard with polished UI interactions.
-
+A full-stack **Task Management System** built using **Flask**, **SQLite**, **SQLAlchemy**, and **Flask-Login**. The application provides secure user authentication, task creation, editing, deletion, filtering, and a clean responsive dashboard for efficient task management.
 ---
+## ✨ Features
 
-## Screenshots
-
-| Login Page | Register Page |
-|---|---|
-| ![Login](screenshots/login.png) | ![Register](screenshots/register%20page.png) |
-
-| Dashboard | Create Task |
-|---|---|
-| ![Dashboard](screenshots/dashboard.png) | ![New Task](screenshots/new%20task.png) |
-
+- 🔐 Secure User Registration and Login
+- 👤 User Authentication using Flask-Login
+- ➕ Create New Tasks
+- ✏️ Edit Existing Tasks
+- 🗑️ Delete Tasks
+- ✅ Mark Tasks as Completed
+- 🔍 Search Tasks
+- 🏷️ Filter Tasks by Category
+- 📅 Due Date Management
+- ⚡ Responsive Dashboard
+- 💾 SQLite Database Integration
+- 🧩 SQLAlchemy ORM
+- 🛡️ Input Validation and Error Handling
+- 🧪 Unit Testing using PyTest
 ---
+# 📸 Application Screenshots
 
-## Features
+## 🔐 Login Page
 
-- User Registration & Login with password hashing
-- Session-based authentication (Flask-Login)
-- Create, Read, Update, Delete tasks
-- Mark tasks as Complete / Pending (toggle)
-- Task ownership enforcement (users only see their own tasks)
-- Custom design system (Geist typeface, Phosphor icons, intentional spacing/typography)
-- Completion animations, first-task confetti, textarea auto-resize
-- Keyboard shortcut (Cmd+Enter to submit forms)
-- Responsive layout with mobile breakpoints
-- WCAG AA contrast-targeted colors
-- Search, category, and status filtering
-- Server-side input validation
-- Flash messages for user feedback
-- SQLite database (no external DB setup needed)
-- 21 PyTest unit tests (auth + CRUD)
+![Login Page](screenshots/login.png)
 
+## 📝 Register Page
+
+![Register Page](screenshots/register%20page.png)
+
+## 📋 Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+## ➕ Create Task
+
+![Create Task](screenshots/new%20task.png)
 ---
+# 🛠️ Tech Stack
 
-## Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Backend | Python 3 + Flask |
-| Database | SQLite (via SQLAlchemy ORM) |
-| Frontend | HTML5, CSS3, custom design system (Geist, Phosphor Icons) |
-| Auth | Flask-Login + Werkzeug hashing |
+| Category | Technologies |
+|----------|--------------|
+| Backend | Flask, Python |
+| Database | SQLite, SQLAlchemy |
+| Authentication | Flask-Login |
+| Frontend | HTML5, CSS3, JavaScript |
 | Testing | PyTest |
-| Version Control | Git & GitHub |
+| Version Control | Git, GitHub |
 
 ---
+# 📂 Project Structure
 
-## Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/AbdulAhadSerfraz/task-management-system.git
-cd task-management-system
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Run the application
-python app.py
-
-# 4. Open in browser
-# http://127.0.0.1:5000
-```
-
----
-
-## Running Tests
-
-```bash
-pytest tests/ -v
-```
-
-Expected output: **21 passed**
-
----
-
-## Project Structure
-
-```
+```text
 task-management-system/
-├── app.py               # Flask application factory
-├── config.py            # Configuration settings
-├── extensions.py        # Flask extensions (db, login_manager)
-├── PRODUCT.md           # Product design brief
-├── requirements.txt     # Python dependencies
-├── .gitignore
-├── README.md
-├── screenshots/         # Application screenshots
-│   ├── login.png
-│   ├── register page.png
-│   ├── dashboard.png
-│   └── new task.png
-├── models/
-│   ├── __init__.py
-│   ├── user.py          # User model (auth)
-│   └── task.py          # Task model (CRUD)
-├── routes/
-│   ├── __init__.py
-│   ├── auth_routes.py   # Login/Register/Logout
-│   └── task_routes.py   # Task CRUD operations
-├── templates/
-│   ├── base.html        # Base layout
-│   ├── login.html       # Login form
-│   ├── register.html    # Registration form
-│   ├── dashboard.html   # Task dashboard
-│   ├── create_task.html # Create task form
-│   └── edit_task.html   # Edit task form
-├── static/
-│   ├── css/
-│   │   └── style.css    # Custom design system
-│   └── js/
-│       └── delight.js   # UI interactions and animations
-├── tests/
-│   ├── __init__.py
-│   └── test_app.py      # 21 PyTest tests
-└── utils/
-    └── __init__.py
+│
+├── models/               # Database models
+├── routes/               # Application routes
+├── static/               # CSS, JavaScript, Images
+├── templates/            # HTML templates
+├── tests/                # Unit tests
+├── utils/                # Helper functions
+├── screenshots/          # Application screenshots
+│
+├── app.py                # Main application entry point
+├── config.py             # Application configuration
+├── extensions.py         # Flask extensions
+├── requirements.txt      # Project dependencies
+├── README.md             # Project documentation
+└── .gitignore
+```
+---
+# ⚙️ Installation
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/Mahendrakarthikeyan/task-management-system.git
 ```
 
-> **Note:** The UI uses a custom-built design system, not a third-party framework. Typography uses Geist (sans) and Geist Mono. Icons are from Phosphor Icons. All styling is hand-crafted in `style.css`.
+## 2. Navigate to the Project
 
----
-
-## Application Workflow
-
-```
-User opens browser → http://localhost:5000
-         │
-         ▼
-    ┌─────────────┐
-    │  Home Page   │  Redirects to Login or Dashboard
-    └──────┬──────┘
-           │
-    ┌──────▼──────┐
-    │   Register  │  Create account (username, email, password)
-    └──────┬──────┘
-           ▼
-    ┌─────────────┐
-    │    Login    │  Authenticate → session created
-    └──────┬──────┘
-           ▼
-    ┌─────────────┐      ┌──────────────────┐
-    │  Dashboard  │──────│   Create Task    │
-    │ (Task List) │      └──────────────────┘
-    └──────┬──────┘
-           │
-    ┌──────▼──────┐      ┌──────────────────┐
-    │  Task Card  │──────│   Edit Task      │
-    │ (Actions)   │──────│   Delete Task    │
-    │             │──────│   Complete/Undo  │
-    └─────────────┘
+```bash
+cd task-management-system
 ```
 
+## 3. Create a Virtual Environment
+
+### macOS / Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Windows
+
+```cmd
+python -m venv venv
+venv\Scripts\activate
+```
+
+## 4. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
 ---
 
-## API Routes
+# ▶️ Running the Application
 
-| Method | Route | Description | Auth |
-|--------|-------|-------------|------|
-| GET | `/` | Home redirect | No |
-| GET/POST | `/login` | Login page/form | No |
-| GET/POST | `/register` | Registration page/form | No |
-| GET | `/logout` | Logout user | Yes |
-| GET | `/dashboard` | View tasks | Yes |
-| GET/POST | `/tasks/create` | Create task | Yes |
-| GET/POST | `/tasks/edit/<id>` | Edit task | Yes |
-| GET | `/tasks/delete/<id>` | Delete task | Yes |
-| GET | `/tasks/complete/<id>` | Toggle status | Yes |
+Start the Flask development server:
 
+```bash
+python app.py
+```
+
+or on macOS/Linux:
+
+```bash
+python3 app.py
+```
+
+Open your browser and visit:
+
+```
+http://127.0.0.1:5000
+```
+
+Register a new account and start managing your tasks.
 ---
+
+# ▶️ Running the Application
+
+Start the Flask development server:
+
+```bash
+python app.py
+```
+
+or on macOS/Linux:
+
+```bash
+python3 app.py
+```
+
+Open your browser and visit:
+
+```
+http://127.0.0.1:5000
+```
+
+Register a new account and start managing your tasks.
 ---
 
-## Git Workflow
+# 🧪 Running Tests
 
-1. All development happens on feature branches
-2. Pull requests are created before merging into `develop`
-3. `main` branch contains only stable, tested code
-4. Commit messages follow conventional format
+Run the automated test suite using:
+
+```bash
+pytest
+```
+
+or
+
+```bash
+pytest -v
+```
+
+The project includes unit tests covering authentication and task management functionality.
+---
+
+# 🚀 Future Enhancements
+
+- 📧 Email notifications for upcoming tasks
+- 🌙 Dark mode support
+- 📅 Calendar integration
+- 📱 Mobile-friendly improvements
+- 📂 File attachments for tasks
+- 🔔 Push notifications
+- 🌐 REST API support
+- 🐳 Docker containerization
+---
+
+# 👨‍💻 Author
+
+**Mahendra Karthikeyan**
+
+- GitHub: https://github.com/Mahendrakarthikeyan
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
