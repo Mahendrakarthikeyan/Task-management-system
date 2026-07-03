@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock title %} &middot; Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  {% if current_user.is_authenticated %}
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a class="navbar-brand" href="{{ url_for('task.dashboard') }}">
+        <i class="ph-bold ph-check-square"></i>
+        Tasks
+      </a>
+      <ul class="navbar-links">
+        <li><a href="{{ url_for('task.dashboard') }}"><i class="ph-bold ph-squares-four"></i><span>Dashboard</span></a></li>
+        <li><a href="{{ url_for('task.create_task') }}"><i class="ph-bold ph-plus"></i><span>New Task</span></a></li>
+        <li><a href="{{ url_for('auth.logout') }}"><i class="ph-bold ph-sign-out"></i><span>Logout</span></a></li>
+      </ul>
+    </div>
+  </nav>
+  {% endif %}
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-container">
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }}" role="alert">
+        <i class="ph-bold ph-{{ 'check-circle' if category == 'success' else 'warning-circle' if category == 'danger' else 'info' }}"></i>
+        <span>{{ message }}</span>
+        <button class="alert-close" onclick="this.parentElement.remove()" aria-label="Close">&times;</button>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endwith %}
+
+  <main class="container page-main">
+    {% block content %}{% endblock content %}
+  </main>
+
+  <script src="{{ url_for('static', filename='js/delight.js') }}"></script>
+</body>
+</html>
